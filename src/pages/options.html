@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../services/styles/bootstrap.css">
+    <link rel="stylesheet" href="../services/styles/global.css">
+    <title>Github</title>
+</head>
+
+<body>
+    <div class="d-flex justify-content-center ">
+        <div class=" row">
+            <h1>Github Users</h1>
+            <div class="col-md row">
+                <input id="searchUser" class="form-contrl col-md m-3" placeholder="Buscar nome de Usuario no GitHub"
+                    type="text">
+                <button id="buttonSearch" class="btn btn-success col-md-2 m-3">Buscar</button>
+
+            </div>
+            <div id="errorUser" hidden class="alert alert-danger" role="alert">
+                O usuario nao existe na base do Github!
+            </div>
+            <div class="card p-0">
+                <div class="card-herder"> Informacoes do Usuario</div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-center row text-center user-avatar">
+                        <img id="profile" class="avatar" src="../assets/user.png" alt="Avatar GuitHab">
+                        <span id="username"> Busque pelo nome do Usuario</span>
+                    </div>
+                    <hr />
+                    <ul id="repositoryList" class="list-group">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var searchInputElement = document.getElementById('searchUser');
+    var buttonSearchElement = document.getElementById('buttonSearch');
+    var profileImageElement = document.getElementById('profile');
+    var usernameElement = document.getElementById('username');
+    var repositoryListElement = document.getElementById('repositoryList');
+
+
+    buttonSearchElement.addEventListener('click', searchUsername);
+
+
+
+
+    function searchUsername() {
+        var searchUser = {
+            username: searchInputElement.value,
+            type: 'search'
+        }
+
+        var listRepositories = {
+            username: searchInputElement.value,
+            type: 'list-repositories'
+
+
+        }
+        chrome.runtime.sendMessage(searchUser, (response) => {
+
+            if (response.message === 'Not Found') {
+                document.getElementById('errorUser').removeAttribute('hidden');
+                return;
+            }else{
+                document.getElementById('errorUser').setAttribute('hidden', 'hidden');
+            }
+
+            var username = response.login;
+            var linkProfileImage = response.avatar_url;
+
+
+            usernameElement.innerHTML = username;
+            profileImageElement.src = linkProfileImage;
+
+            getRepositories(listRepositories);
+
+        });
+
+    }
+    function getRepositories(listRepositories){
+        chrome.runtime.sendMessage(listRepositories, (response) => {
+
+            /*             <li class="list-group-item d-flex justify-content-between align-items-center">An item <a
+                                            href="#" class="btn btn-primary">Acessar</a></li> */
+
+
+            repositoryListElement.innerHTML = '';
+            //botao de acesso
+            response.forEach((item) => {
+                var buttonRepository = document.createElement('a');
+                buttonRepository.href = 'https://github.com/' + item.full_name;
+                buttonRepository.innerHTML = 'Acessar';
+                buttonRepository.setAttribute('class', 'btn btn-primary');
+                buttonRepository.setAttribute('target', '_blank');
+
+                var repositoryContent = document.createElement('li');
+                repositoryContent.setAttribute('class', 'list-group-item d-flex justify-content-between align-items-center');
+
+                repositoryContent.innerHTML = item.name;
+                repositoryContent.appendChild(buttonRepository);
+
+                console.log(repositoryContent);
+
+                repositoryListElement.appendChild(repositoryContent)
+            });
+
+        });
+
+    }
+
+
+</script>
+
+</html>

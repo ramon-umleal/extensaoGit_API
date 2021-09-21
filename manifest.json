@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+  "name": "API GitHub",
+  "version": "1.0",
+  "description": "API GitHub, listar usuarios e fontes",
+  "icons": {
+    "128": "img/icon128.png",
+    "19": "img/icon19.png",
+    "48": "img/icon48.png"
+  },
+  "background": {
+    "scripts": ["src/services/background.js"],
+    "persistent": false
+  },
+    
+  "options_page": "src/pages/options.html",
+  "browser_action": {
+    "default_icon": {
+      "128": "img/icon128.png",
+      "19": "img/icon19.png",
+      "48": "img/icon48.png"
+    },
+    "default_title": "API GitHub",
+    "default_popup": "src/pages/index.html"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "src/components/buttonDownload.js",
+        "src/main.js"
+      ],
+      "matches": [
+        "*://*/*", "<all_urls>" 
+      ]
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'sha256-4+tC67n6Meptls1ZOMKIurmGROYj9iGyPHSYmdPaUas='"  
+
+}

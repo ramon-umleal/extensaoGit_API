@@ -1,0 +1,20 @@
+body{
+    margin: 20px;
+}
+.user-avatar span {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 20px;
+
+
+}
+
+.avatar {
+    width: 140px;
+    border-radius: 50%;
+}
+
+.rodape {
+    width: 140px;
+    border-radius: 50%;
+}
