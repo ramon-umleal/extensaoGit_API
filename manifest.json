@@ -30,7 +30,7 @@
         "src/main.js"
       ],
       "matches": [
-        "*://*/*", "<all_urls>" 
+        "*://*/*", "<all_urls>"  
       ]
     }
   ],
