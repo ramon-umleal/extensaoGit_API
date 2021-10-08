@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Consultas externas do Sapiens",
-  "version": "0.0",
+  "version": "0.01",
   "description": "Consultas externas do Sapiens",
   "icons": {
     "128": "img/icon128.png",
