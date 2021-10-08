@@ -1,40 +1,46 @@
 {
   "manifest_version": 2,
-  "name": "API GitHub",
-  "version": "1.0",
-  "description": "API GitHub, listar usuarios e fontes",
+  "name": "Consultas externas do Sapiens",
+  "version": "0.0",
+  "description": "Consultas externas do Sapiens",
   "icons": {
     "128": "img/icon128.png",
     "19": "img/icon19.png",
     "48": "img/icon48.png"
   },
   "background": {
-    "scripts": ["src/services/background.js"],
+    "scripts": ["src/background.js"],
     "persistent": false
   },
-    
-  "options_page": "src/pages/options.html",
   "browser_action": {
     "default_icon": {
       "128": "img/icon128.png",
       "19": "img/icon19.png",
       "48": "img/icon48.png"
     },
-    "default_title": "API GitHub",
+    "default_title": "Consultas externas do Sapiens",
     "default_popup": "src/pages/index.html"
   },
   "content_scripts": [
+<<<<<<< HEAD
     {
       "js": [
         "src/components/buttonDownload.js",
         "src/main.js"
         
       ],
+=======
+    { 
+      "run_at": "document_idle",
+      "js": ["src/components/mftools.js",
+        "src/components/buttonConsulta.js",
+        "src/main.js"],
+
+
+>>>>>>> 99021392472b28d41fba58839cf3ce406e240648
       "matches": [
-        "*://*/*", "<all_urls>"  
+        "https://sapiens.agu.gov.br/*"
       ]
     }
-  ],
-  "content_security_policy": "script-src 'self' 'sha256-4+tC67n6Meptls1ZOMKIurmGROYj9iGyPHSYmdPaUas='"  
-
+  ]
 }
