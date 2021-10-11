@@ -22,6 +22,14 @@
     "default_popup": "src/pages/index.html"
   },
   "content_scripts": [
+<<<<<<< HEAD
+    {
+      "js": [
+        "src/components/buttonDownload.js",
+        "src/main.js"
+        
+      ],
+=======
     { 
       "run_at": "document_idle",
       "js": ["src/components/mftools.js",
@@ -29,6 +37,7 @@
         "src/main.js"],
 
 
+>>>>>>> 99021392472b28d41fba58839cf3ce406e240648
       "matches": [
         "https://sapiens.agu.gov.br/*"
       ]
