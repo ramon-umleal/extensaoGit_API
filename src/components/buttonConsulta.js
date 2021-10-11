@@ -26,7 +26,7 @@
     a1buttonConsulta.setAttribute('class','nav-link active');
     a1buttonConsulta.setAttribute('id','ida1buttonConsulta');
     a1buttonConsulta.setAttribute('aria-current','page');
-    a1buttonConsulta.setAttribute('href','https://www.google.com/');
+    a1buttonConsulta.setAttribute('href','https://meucadunico.cidadania.gov.br/meu_cadunico/index.php');
     a1buttonConsulta.setAttribute('target','_blank');
     a1buttonConsulta.innerHTML = 'Consultas Externas';
 

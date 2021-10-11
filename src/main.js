@@ -8,38 +8,43 @@ const esperar = (n) => new Promise(rr => {
 });
 
 window.onload = async () => {
-    ///////////////////////// Incluindo os botoes 
+    ///////////////////////// Incluindo div do pop 
     console.log('iniciar');
     await esperar(10000);
     const bt = new MFt.bt({
-        value: 'TESTE',
+        value: 'PopUp',
         width: 100,
         height: 30,
         wrapper: MFt.criaElem('div', {
             style: {
                 position: 'fixed',
-                top: '100px',
-                left: '100px'
+                top: '190px',
+                left: '1400px'
             }
         }, document.body),
         callback: ()=>{
             // PopUp precisa de mftools.js
             const pop = new PopUp(400, 200, null, null, form=>{
                 MFt.criaElem('a', {
-                    href: 'httwwwps://manoelpaz.com',
+                    href: 'https://manoelpaz.com',
                     target: '_blank',
                     innerText: 'TESTE'
                 }, form.div);
                 pop.aceitaEsc = true;
+                pop.iniciar(pop);
+                //pop.aceitaEsc = false;
+                //pop.clicarForaSair = false;
             });
         }
     });
     
-    pop.iniciar(pop);
-    pop.aceitaEsc = false;
-    pop.clicarForaSair = false;
 
+        
+        
     console.log(bt);
+//incluido os botoes 
+
+
     var menuSa = document.getElementById('toolbar-1890-innerCt');
 
     menuSa.appendChild(ulbuttonConsulta1);
@@ -96,5 +101,4 @@ window.onload = async () => {
     menuSlia3.appendChild(a1buttonConsulta3);
 
 }
-
-
+//004101181272021-95
