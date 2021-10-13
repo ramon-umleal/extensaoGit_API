@@ -332,16 +332,16 @@ const bt1 = new MFt.bt({
         console.log('inicio testes');
         
         const bt4 = new MFt.bt({
-            value: 'PopUp4',
-            width: 60,
-            height: 20,
+            value: 'EX. DE DOSSIÊ PREVIDENCIÁRIO',
+            width: 180,
+            height: 30,
             wrapper: MFt.criaElem('div', {
                 style: {
                     position: 'fixed',
                     top: '110px',
                     left: '640px'
                 }
-            }, document.getElementById('toolbar-1890-innerCt')),
+            }, document.getElementById('toolbar-1812-innerCt')),
             callback: ()=>{
 
                                         //largura x altura
